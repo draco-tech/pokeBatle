@@ -1,0 +1,171 @@
+.container{
+    width: 600px;
+    height: 400px;
+    border: 2px black solid;
+}
+.batalla-container{
+    width: 600px;
+    height: 250px;
+    border: 2px black solid;
+    background-color: rgb(255, 72, 0);
+    display: flex;
+    /* align-items: center;
+    justify-content: center;
+    flex-direction: row; */
+    position: relative;
+
+}
+
+.button-container{
+    box-sizing:border-box;
+    width: 600px;
+    height: 150px;
+    border: 2px black solid;
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    z-index: 20;
+    position: relative;
+}
+
+.action-button{
+    width: 250px;
+    height: 50px;
+    border: 2px black solid;
+    color: aliceblue;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 20px;
+}
+.buttonLuchar{
+    background-color: rgb(255, 0, 0) ;
+}
+.buttonmochila{
+    background-color: rgb(255, 217, 0);
+}
+.buttonpokemon{
+    background-color: chartreuse;
+}
+.buttonuir{
+    background-color: #286b9f;
+}
+.imagen{
+    width: 600px;
+    height: 250px;
+    position: absolute;
+    z-index: 0;
+}
+.pokeView{
+ z-index: 10;
+ display: flex;
+ flex-direction: row;
+ width: 600px;
+ justify-content: ;
+ position: relative;
+}
+.poke-info{
+    width: 220px;
+    height: 70px;
+    background-color: azure;
+    padding-left: 10px;
+    box-shadow: 8px 8px 18px #000;
+}
+.hpBar{
+    background-color: green;  
+      width: 165px;   
+       height: 17px;   
+        color: white; 
+           padding-left: 32px;
+           
+}
+
+#pokemon-enemy{
+    position: absolute;
+    right: 101px;
+    top: 8px;
+}
+ #pokemon-enemy img{
+    
+    top: 5px;
+    right: -57px;
+}
+#pokemon-enemy section{
+     display: flex;
+     flex-direction: row;
+     
+}
+#pokemon-enemy div{
+   
+    position: relative;
+    right: 8px;
+    top: 40px;
+}
+
+#pokemon-amigo{
+    position: absolute;
+    left: 101px;
+    top: 8px;
+}
+#pokemon-amigo img{
+    
+    top: 127px;
+    right: 70px;
+}
+
+#pokemon-amigo div{
+   
+    position: relative;
+    right: -8px;
+    top: 160px;
+} 
+#pokemon-amigo section{
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.chowPokemon{
+    
+     width: 240px;
+    height: 219px;
+    position: relative;
+}
+.pokemonImagesIdle{
+    animation: pokemonImagesIdle 4s infinite;
+}
+
+@keyframes pokemonImagesIdle {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(4px, 0);
+    }
+    50% {
+        transform: translate(4px, 4px);
+    }
+    75% {
+        transform: translate(0, 4px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.pokemonImagesAttack{
+    animation: pokemonImagesAttack 2s both;
+}
+
+@keyframes pokemonImagesAttack {
+    0% {
+        transform: translate(0, 0);
+    }
+   
+    50% {
+        transform: translate(250px, -140px);
+    }
+}
+
