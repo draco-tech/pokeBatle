@@ -1,10 +1,24 @@
+let pokemonAmigo = document.getElementById("pokemon-amigo")
+let pokemonEnemy = document.getElementById("pokemon-enemy")
+
+
+
+function pintarPokemon (){         
+    pokemonEnemy.innerHTML = template(moltres, true)
+    pokemonAmigo.innerHTML = template(cubone1, false)
+
+} 
+
+
+
+
 class Pokemon{
     constructor({name , hp , pokenumber}){
         this.name = name
         this.hp = hp
         this.spriteback = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokenumber}.png`
         this.spritefront = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokenumber}.png`
-        // this.idImage = ""
+
     }
     saludar(){
         console.log(`----------- \n hi ${this.name} \n HP:${this.hp} \n type ${this.tipo}\n ----------- \n`)
@@ -17,6 +31,37 @@ class Pokemon{
     }
     
 }
+let moltres = "";
+
+(async ()=>{
+    const idRamdon = Math.floor(Math.random() * 150 )
+    const data = await fetch("https://pokeapi.co/api/v2/pokemon/"+idRamdon)
+    const dataJSon = await data.json()
+    console.log('TO CHECK data',dataJSon);
+    moltres = new PokemonNormal ({name:dataJSon.name , hp:150 , pokenumber:idRamdon})
+
+        pintarPokemon()
+
+   
+})()
+
+
+
+
+
+
+// .then((poke) => poke.json())
+// .then((pokedata) => console.log(pokedata))
+
+
+
+
+async function callPokemon(){
+    
+    return data
+}
+
+
 class PokemonNormal extends Pokemon {
     constructor(data){
         super(data)
@@ -30,7 +75,7 @@ class PokemonNormal extends Pokemon {
 }
 // let picachu = new PokemonElectrico("picachu" , 100 )
 const cubone1 = new PokemonNormal ( {pokenumber:141 ,name:"cubone" , hp:140  })
-const moltres = new PokemonNormal ({name:"moltres" , hp:150 , pokenumber:25})
+
 /*
 class PokemonElectrico extends Pokemon {
     constructor(name , hp ){
@@ -81,8 +126,6 @@ let squirtle = new PokemonAgua("squirtler", 100 )
 squirtle.saludar()
 */
 
-let pokemonAmigo = document.getElementById("pokemon-amigo")
-let pokemonEnemy = document.getElementById("pokemon-enemy")
 
 
 
@@ -102,11 +145,7 @@ const template = (Pokemon, isEnemy)  => {
 
 
 
-function pintarPokemon (){         
-            pokemonEnemy.innerHTML = template(moltres, true)
-            pokemonAmigo.innerHTML = template(cubone1, false)
 
-} 
 
 
 const showAttack= ( )=>{  
@@ -131,5 +170,5 @@ const showAttack= ( )=>{
  
 }
 
-pintarPokemon()
+
 
