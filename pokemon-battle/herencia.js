@@ -1,6 +1,6 @@
 let pokemonAmigo = document.getElementById("pokemon-amigo")
 let pokemonEnemy = document.getElementById("pokemon-enemy")
-
+let pokemonbag = document.getElementById("PokemonBag")
 
 
 function pintarPokemon (){         
@@ -32,18 +32,34 @@ class Pokemon{
     
 }
 let moltres = "";
+let pokemon = [];
+
 
 (async ()=>{
     const idRamdon = Math.floor(Math.random() * 150 )
-    const data = await fetch("https://pokeapi.co/api/v2/pokemon/"+idRamdon)
-    const dataJSon = await data.json()
-    console.log('TO CHECK data',dataJSon);
-    moltres = new PokemonNormal ({name:dataJSon.name , hp:150 , pokenumber:idRamdon})
+    moltres =  await callPokemonInfo(idRamdon)
 
         pintarPokemon()
+        pokemon.push( await callPokemonInfo(1))
+        pokemon.push( await callPokemonInfo(2))
+        pokemon.push( await callPokemonInfo(3))
+        console.log(pokemon);
+        for (let p = 0; p < pokemon.length; p = p + 1){
+            pokemonbag.innerHTML += templatebag(pokemon[p])
+        }
+
+
 
    
 })()
+
+async function callPokemonInfo(id){
+    const data = await fetch("https://pokeapi.co/api/v2/pokemon/"+id)
+    const dataJSon = await data.json()
+    return new PokemonNormal ({name:dataJSon.name , hp:150 , pokenumber:id})
+}
+
+ 
 
 
 
@@ -76,58 +92,15 @@ class PokemonNormal extends Pokemon {
 // let picachu = new PokemonElectrico("picachu" , 100 )
 const cubone1 = new PokemonNormal ( {pokenumber:141 ,name:"cubone" , hp:140  })
 
-/*
-class PokemonElectrico extends Pokemon {
-    constructor(name , hp ){
-        super(name , hp)
-        this.tipo = "electrico"
-
-    }
-    saludarPKElectrio(){
-        console.log("soy un pokemon que no sigue la corriente")
-    }
-    
-}
-
-class PokemonAgua extends Pokemon {
-    constructor(name , hp ){
-        super(name , hp)
-        this.tipo = "agua"
-
-    }
-
-    saludarPKAgua(){
-        console.log(`yo si sigo la corriente`)
-}
-    
-}
-    
-
-
-class PokemonFuego {
-    constructor(name , hp ){
-        this.name = name
-        this.hp = hp
-        this.tipo = "fuego"
-
-    }
-    saludarPKfuego(){
-        console.log(`bolita de fuego`)
-    }
-    
-}
-
-// let picachu = new PokemonElectrico("picachu" , 100 )
-// let charmande = new PokemonFuego("charmander", 100 ,"fuego")
-// let Zapdos = new PokemonElectrico("Zaptdos" , 100 , "electrico")
-let electron = new PokemonElectrico("electron" , 100 , "electrico")
-let squirtle = new PokemonAgua("squirtler", 100 )
-
-squirtle.saludar()
-*/
 
 
 
+const templatebag =(pokemon) => `
+<section>
+        <img src="${pokemon.spritefront}" alt="">
+        <p>name Poke: ${pokemon.name}</p>
+        </section>
+` 
 
 
 
@@ -137,7 +110,7 @@ const template = (Pokemon, isEnemy)  => {
     return(`
             <section>
                 <div class="poke-info">
-                    <p>name: ${Pokemon.name}</p>
+                    <p>name: ${Pokemon.name} </p>
                     <p class = "hpBar">hp: ${Pokemon.hp}</p>
                 </div>
                 <img id=${Pokemon.idImage} class="chowPokemon  pokemonImagesIdle " src= ${isEnemy ? Pokemon.spritefront:Pokemon.spriteback} alt="not">

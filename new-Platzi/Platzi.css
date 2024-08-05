@@ -1,0 +1,16 @@
+.div-padre{
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+    display: block;
+    position: relative;
+    
+}
+.div-hijo{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    display: block;
+    position: relative;
+    margin-top: 10px;
+}

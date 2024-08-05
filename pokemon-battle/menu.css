@@ -1,0 +1,51 @@
+
+.menu-container{
+    width: 600px;
+    height: 600px;
+    border: 2px #000 solid;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button{
+    width: 400px;
+    height: 160px;
+    display: block;
+    border-radius: 10px;
+    font-size: 48px;
+    border: 1px #000 solid;
+    display: block;
+    color: white;
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 100ms;
+    
+}
+.button-play{
+    box-shadow: 8px 8px 18px #000;
+    background-color: red;
+    margin-bottom: 50px;
+}
+.button-Select-Team{
+    box-shadow: 8px 8px 18px #000;
+    background-color: skyblue;
+}
+.button-Select-Team:active {
+    cursor: pointer;
+    background-color: rgb(24, 92, 156);
+    box-shadow: 2px 2px 10px #000;
+    color: rgb(14, 29, 117);
+    transform: translateY(10px);
+}
+.button-play:active {
+    cursor: pointer;
+    background-color: rgb(247, 109, 109);
+    box-shadow: 2px 2px 10px #000;
+    color: rgb(124, 0, 0);
+    transform: translateY(10px);
+}
